@@ -3,7 +3,7 @@ FROM ubuntu
 ENV DEBIAN_FRONTEND noninteractive
 
 # install packages
-RUN apt-get update && apt-get install -y --no-install-recommends\
+CMD apt-get update && apt-get install -y --no-install-recommends\
 	openjdk-11-jdk \
 	android-sdk-platform-tools-common \
 	android-tools-adb \
@@ -37,10 +37,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
 	squashfs-tools \
 	xsltproc \
 	zip \
-	zlib1g-dev \
-	;\
+	zlib1g-dev
 	
-RUN mkdir -p ~/bin \
+CMD mkdir -p ~/bin \
 	mkdir -p ~/android/lineage 
 	
 CMD curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo \
