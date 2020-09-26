@@ -3,7 +3,7 @@ FROM ubuntu
 ENV DEBIAN_FRONTEND noninteractive
 
 # install packages
-CMD apt-get update && apt-get install -y --no-install-recommends\
+RUN apt-get update && apt-get install -y --no-install-recommends \
 	openjdk-11-jdk \
 	android-sdk-platform-tools-common \
 	android-tools-adb \
@@ -39,21 +39,21 @@ CMD apt-get update && apt-get install -y --no-install-recommends\
 	zip \
 	zlib1g-dev
 	
-CMD mkdir -p ~/bin \
+RUN mkdir -p ~/bin && \
 	mkdir -p ~/android/lineage 
 	
-CMD curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo \
+RUN curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && \
 	chmod a+x ~/bin/repo
 
 # set PATH so it includes user's private bin if it exists
-CMD if [ -d "$HOME/bin" ] ; then \
+RUN if [ -d "$HOME/bin" ] ; then \
 		PATH="$HOME/bin:$PATH" \
 	fi
 
-CMD cd ~/android/lineage \
+RUN cd ~/android/lineage \
 	repo init -u https://github.com/LineageOS/android.git -b lineage-17.1
 	
-CMD repo sync
+RUN repo sync
 
-CMD source build/envsetup.sh \
+RUN source build/envsetup.sh && \
 	breakfast ginkgo
