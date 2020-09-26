@@ -1,0 +1,17 @@
+name: build
+
+# トリガー
+on:
+  push:
+
+jobs:
+  build:
+  
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+
+    steps:
+    - uses: actions/checkout@v2
+	
+	-name: build
+	run: docker build -t lineage17 .
