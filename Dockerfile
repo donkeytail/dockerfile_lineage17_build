@@ -47,7 +47,7 @@ RUN curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && 
 
 # set PATH so it includes user's private bin if it exists
 RUN if [ -d "$HOME/bin" ] ; then \
-		PATH="$HOME/bin:$PATH" \
+		PATH="$HOME/bin:$PATH"; \
 	fi
 
 RUN cd ~/android/lineage \
