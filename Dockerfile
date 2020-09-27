@@ -41,7 +41,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	xsltproc \
 	zip \
 	zlib1g-dev \
-	repo
+	python
 	
 RUN git config --global user.email $USER_EMAIL && \
 	git config --global user.name $USER_NAME
