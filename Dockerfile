@@ -3,9 +3,6 @@ FROM ubuntu
 ARG USER_EMAIL
 ARG USER_NAME
 
-RUN git config --global user.email $USER_EMAIL && \
-	git config --global user.name $USER_NAME
-
 ENV DEBIAN_FRONTEND noninteractive
 
 # install packages
@@ -44,6 +41,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	xsltproc \
 	zip \
 	zlib1g-dev
+	
+RUN git config --global user.email $USER_EMAIL && \
+	git config --global user.name $USER_NAME
 	
 RUN mkdir -p ~/bin && \
 	mkdir -p ~/android/lineage 
