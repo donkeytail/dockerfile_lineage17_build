@@ -3,6 +3,9 @@ FROM ubuntu
 ARG USER_EMAIL
 ARG USER_NAME
 
+RUN git config --global user.email "$USER_EMAIL" && \
+	git config --global user.name "$USER_NAME"
+
 ENV DEBIAN_FRONTEND noninteractive
 
 # install packages
@@ -52,9 +55,6 @@ RUN curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && 
 RUN if [ -d "$HOME/bin" ] ; then \
 		PATH="$HOME/bin:$PATH"; \
 	fi
-
-RUN git config --global user.email $USER_EMAIL && \
-	git config --global user.name $USER_NAME
 
 RUN cd ~/android/lineage \
 	repo init -u https://github.com/LineageOS/android.git -b lineage-17.1
