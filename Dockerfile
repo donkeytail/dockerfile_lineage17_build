@@ -54,7 +54,7 @@ RUN if [ -d "$HOME/bin" ] ; then \
 	fi
 
 RUN git config --global user.email $USER_EMAIL && \
-	git config --global user.name $USER_NAME"
+	git config --global user.name $USER_NAME
 
 RUN cd ~/android/lineage \
 	repo init -u https://github.com/LineageOS/android.git -b lineage-17.1
