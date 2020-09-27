@@ -66,7 +66,7 @@ RUN mkdir -p ~/bin && \
 RUN curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && \
 	chmod a+x ~/bin/repo
 
-RUN PATH="$HOME/bin:$PATH"
+ENV PATH $PATH:$HOME/bin
 
 RUN cd ~/android/lineage && \
 	repo init -u https://github.com/LineageOS/android.git -b lineage-17.1
