@@ -66,10 +66,7 @@ RUN mkdir -p ~/bin && \
 RUN curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && \
 	chmod a+x ~/bin/repo
 
-# set PATH so it includes user's private bin if it exists
-RUN if [ -d "$HOME/bin" ] ; then \
-		PATH="$HOME/bin:$PATH"; \
-	fi
+RUN PATH="$HOME/bin:$PATH"
 
 RUN cd ~/android/lineage && \
 	repo init -u https://github.com/LineageOS/android.git -b lineage-17.1
