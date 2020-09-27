@@ -40,7 +40,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	squashfs-tools \
 	xsltproc \
 	zip \
-	zlib1g-dev
+	zlib1g-dev \
+	repo
 	
 RUN git config --global user.email $USER_EMAIL && \
 	git config --global user.name $USER_NAME
