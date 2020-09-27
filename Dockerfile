@@ -3,8 +3,8 @@ FROM ubuntu
 ARG USER_EMAIL
 ARG USER_NAME
 
-RUN git config --global user.email "$USER_EMAIL" && \
-	git config --global user.name "$USER_NAME"
+RUN git config --global user.email $USER_EMAIL && \
+	git config --global user.name $USER_NAME
 
 ENV DEBIAN_FRONTEND noninteractive
 
