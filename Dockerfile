@@ -41,7 +41,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	xsltproc \
 	zip \
 	zlib1g-dev \
-	python
+	# extra packages
+        # for git-repo from google
+        python \
+        # for ps command
+        procps \
+        # no less on debian *gasp!*
+        less \
+        # so we have an editor inside the container
+        vim \
+        # has 'col' package needed for 'breakfast'
+	bsdmainutils \
+        # we can't build kernel on root (like docker runs)
+        # we add these so we have a non-root user
+        fakeroot \
+	sudo 
 	
 RUN git config --global user.email $USER_EMAIL && \
 	git config --global user.name $USER_NAME
@@ -57,7 +71,7 @@ RUN if [ -d "$HOME/bin" ] ; then \
 		PATH="$HOME/bin:$PATH"; \
 	fi
 
-RUN cd ~/android/lineage \
+RUN cd ~/android/lineage && \
 	repo init -u https://github.com/LineageOS/android.git -b lineage-17.1
 	
 RUN repo sync
