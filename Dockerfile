@@ -69,9 +69,8 @@ RUN curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && 
 ENV PATH /root/bin:$PATH
 
 RUN cd ~/android/lineage && \
-	repo init -u https://github.com/LineageOS/android.git -b lineage-17.1
-	
-RUN repo sync
+	repo init -u https://github.com/LineageOS/android.git -b lineage-17.1 && \
+	repo sync
 
 RUN source build/envsetup.sh && \
 	breakfast ginkgo
